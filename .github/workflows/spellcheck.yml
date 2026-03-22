@@ -1,0 +1,19 @@
+name: Spellcheck
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install cspell
+        run: npm install -g cspell
+
+      - name: Run spellchecker
+        run: cspell "**/*.md"
